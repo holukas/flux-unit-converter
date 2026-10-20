@@ -1048,6 +1048,9 @@ sub { font-size: .65em; line-height: 0; vertical-align: -.25em; }
 }
 .footer .meta a { color: var(--muted); }
 .footer .meta a:hover { color: var(--ink); }
+.footer .orcid { display: inline-flex; margin-left: .35em; vertical-align: -.15em; border-radius: 50%; }
+.footer .orcid svg { width: 1.05em; height: 1.05em; transition: transform var(--dur-1); }
+.footer .orcid:hover svg { transform: scale(1.12); }
 
 /* ---------- Toast (warnings only) ---------- */
 .toast {
