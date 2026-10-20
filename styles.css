@@ -1030,12 +1030,24 @@ sub { font-size: .65em; line-height: 0; vertical-align: -.25em; }
 .footer p { margin: 0; max-width: 640px; }
 .footer a { color: var(--ink); text-decoration-color: var(--accent-line); text-underline-offset: 3px; }
 .footer-brand { font-size: 1.2rem; color: var(--ink); }
-.footer .copyright { flex-basis: 100%; color: var(--muted); }
-.footer .build:not(:empty)::before { content: '·'; margin: 0 .6em; }
-.footer .build { font-family: var(--mono); font-size: var(--fs-label); }
-.footer .sep { margin: 0 .6em; }
-.footer .version { font-family: var(--mono); font-size: var(--fs-label); color: var(--muted); }
-.footer .version:hover { color: var(--ink); }
+/* One line of metadata; every item has the same font and size, separated by a middle dot. */
+.footer .meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  flex-basis: 100%;
+  max-width: none;
+  font-variant-numeric: tabular-nums;
+}
+.footer .meta > :empty { display: none; }
+.footer .meta > * + *::before {
+  content: '·';
+  display: inline-block;
+  margin: 0 .5em;
+  color: var(--muted);
+}
+.footer .meta a { color: var(--muted); }
+.footer .meta a:hover { color: var(--ink); }
 
 /* ---------- Toast (warnings only) ---------- */
 .toast {

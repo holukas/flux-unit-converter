@@ -1117,15 +1117,14 @@
     const t = Math.max(...times.filter(Number.isFinite));
     if (!Number.isFinite(t)) return;
     const d = new Date(t);
-    const pad = n => String(n).padStart(2, '0');
-    const zone = new Intl.DateTimeFormat('en-GB', { timeZoneName: 'short' }).formatToParts(d).find(p => p.type === 'timeZoneName')?.value || '';
+    const date = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+    const time = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(d);
     const node = $('#build');
-    node.textContent = `Updated ${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())} ${zone}`.trim();
+    node.textContent = `Updated ${date}, ${time}`;
     node.title = d.toISOString();
   }
 
   // ---------- Go ----------
-  $('#year').textContent = new Date().getFullYear();
   showBuild();
   readHash();
   update({ animate: false });
