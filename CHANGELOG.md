@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2] - 20 Oct 2026
+
+### Changed
+
+- Renamed to Flux unit converter. The web page moved to https://holukas.github.io/flux-unit-converter/
+
 ## [1.0.1] - 20 Oct 2026
 
 ### Added
@@ -28,5 +34,6 @@ First release.
 - Shareable links with the current units and value.
 - Light and dark theme.
 
+[1.0.2]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.2
 [1.0.1]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.1
 [1.0.0]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.0
