@@ -1,4 +1,4 @@
-# Flux unit conversions
+<h1><img src="logo.svg" alt="" width="40" height="40" align="absmiddle"> Flux unit conversions</h1>
 
 Unit conversion for eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O.
 
@@ -26,5 +26,3 @@ python -m http.server
 ```
 
 Verify results independently before using them in publications.
-
-© Lukas Hörtnagl
