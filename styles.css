@@ -1033,6 +1033,9 @@ sub { font-size: .65em; line-height: 0; vertical-align: -.25em; }
 .footer .copyright { flex-basis: 100%; color: var(--muted); }
 .footer .build:not(:empty)::before { content: '·'; margin: 0 .6em; }
 .footer .build { font-family: var(--mono); font-size: var(--fs-label); }
+.footer .sep { margin: 0 .6em; }
+.footer .version { font-family: var(--mono); font-size: var(--fs-label); color: var(--muted); }
+.footer .version:hover { color: var(--ink); }
 
 /* ---------- Toast (warnings only) ---------- */
 .toast {
