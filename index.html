@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-species="co2">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flux unit conversions</title>
+  <meta name="description" content="Unit conversion for eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O, with the full sequence of conversion factors.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2337a07c'/%3E%3Cstop offset='1' stop-color='%23076b4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.5 24.5h17' stroke-opacity='.6'/%3E%3Cpath d='M12.5 20.5v-12m-3.6 3.6 3.6-3.6 3.6 3.6M19.5 8.5v12m-3.6-3.6 3.6 3.6 3.6-3.6'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>try { const t = localStorage.getItem('flux-units-theme'); if (t) document.documentElement.dataset.theme = t; } catch { /* storage blocked */ }</script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><div class="blob"></div></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Flux unit conversions, top of page">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="markFill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" class="mark-top"/>
+              <stop offset="1" class="mark-bottom"/>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="9" fill="url(#markFill)"/>
+          <path class="mark-glyph mark-ground" d="M7.5 24.5h17"/>
+          <path class="mark-glyph mark-up" d="M12.5 20.5v-12m-3.6 3.6 3.6-3.6 3.6 3.6"/>
+          <path class="mark-glyph mark-down" d="M19.5 8.5v12m-3.6-3.6 3.6 3.6 3.6-3.6"/>
+        </svg>
+        <span class="brand-word">Flux unit <em>conversions</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#sequence">Sequence</a>
+        <a href="#presets">References</a>
+        <a href="#batch">Batch</a>
+        <a href="#constants">Constants</a>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Dark theme" aria-pressed="false">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap intro">
+      <h1 class="sr-only">Flux unit conversions</h1>
+      <p class="lede reveal" style="--d:0"><strong>Select the gas, enter a flux value, and click any part of a unit to change it.</strong> Molar or mass amounts; molecule or element basis (C, N); CO<sub>2</sub>-equivalents (GWP<sub>100</sub>) for CH<sub>4</sub> and N<sub>2</sub>O. Each conversion step is listed below.</p>
+      <p class="legend reveal" style="--d:0"><span class="legend-title">Unit parts:</span><span class="lg u-amt">Amount</span><span class="lg u-cmp">Basis</span><span class="lg u-area">Area</span><span class="lg u-time">Time</span></p>
+    </section>
+
+    <section class="wrap reveal" style="--d:1" aria-label="Converter">
+      <div class="card converter" id="converter">
+        <div class="species" role="radiogroup" aria-label="Gas" id="species">
+          <span class="species-ind" aria-hidden="true"></span>
+        </div>
+
+        <div class="panes">
+          <figure class="molecule" id="molecule">
+            <canvas id="molCanvas" role="img" aria-label="3D model of carbon dioxide (CO₂)"></canvas>
+            <figcaption>
+              <span class="mol-formula" id="molFormula">CO<sub>2</sub></span>
+              <span class="mol-name" id="molName">Carbon dioxide</span>
+              <span class="mol-mass" id="molMass"></span>
+              <span class="mol-atoms" id="molAtoms"></span>
+            </figcaption>
+          </figure>
+
+          <div class="pane pane-from">
+            <div class="pane-head"><label class="pane-label" for="valueIn">From</label></div>
+            <div class="field">
+              <input id="valueIn" class="big-number" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="1" placeholder="Flux value" aria-describedby="inputHint" title="Arrow keys: ±1 · Shift: ±10 · Alt: ±0.1">
+              <button class="sign-btn" type="button" id="signBtn" aria-label="Change sign" title="Change sign">±</button>
+            </div>
+            <div class="unit" id="unitFrom" role="group" aria-label="From unit"></div>
+            <p class="hint" id="inputHint"><span class="arrow" aria-hidden="true">↑</span><span class="txt"></span></p>
+          </div>
+
+          <button class="swap" id="swapBtn" type="button" aria-label="Swap from and to units" title="Swap from and to">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v14m0 0-3.5-3.5M7 18l3.5-3.5M17 20V6m0 0-3.5 3.5M17 6l3.5 3.5"/></svg>
+          </button>
+
+          <div class="pane pane-to">
+            <div class="pane-head"><span class="pane-label" id="toLabel">To</span><span class="delta" id="delta" aria-hidden="true"></span></div>
+            <div class="field">
+              <output id="valueOut" class="big-number" aria-labelledby="toLabel" aria-live="off"></output>
+            </div>
+            <div class="unit" id="unitTo" role="group" aria-label="To unit"></div>
+            <div class="pane-actions">
+              <button class="btn primary" type="button" id="copyResult">
+                <span class="ic"><svg class="base-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><svg class="ok-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+                <span class="btn-label">Copy result</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="factor-bar">
+          <div class="factor">
+            <span class="k">Conversion factor</span>
+            <span class="factor-val" id="factor"></span>
+          </div>
+          <div class="factor-actions">
+            <div class="stepper" role="group" aria-label="Significant digits" title="Applies to the result, the sequence and the batch output">
+              <button type="button" id="sigDown" aria-label="Fewer significant digits">−</button>
+              <span><b id="sigVal" aria-live="polite">6</b> significant digits</span>
+              <button type="button" id="sigUp" aria-label="More significant digits">+</button>
+            </div>
+            <button class="btn quiet" type="button" id="copyFactor">
+              <span class="ic"><svg class="base-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><svg class="ok-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+              <span class="btn-label">Copy factor</span>
+            </button>
+            <button class="btn quiet" type="button" id="copyLink">
+              <span class="ic"><svg class="base-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg><svg class="ok-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+              <span class="btn-label">Copy link</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="sr-only" id="resultLive" aria-live="polite"></p>
+      <p class="sr-only" id="statusLive" role="status"></p>
+    </section>
+
+    <section class="wrap section" id="sequence">
+      <div class="section-head">
+        <h2>Conversion sequence</h2>
+        <p>The conversion factor is the product of the step factors below. Steps are applied in the order time base, area base and input prefix, then molar mass, stoichiometry and GWP where required, and finally the output prefix. Each step shows the intermediate result and its unit. Hover a unit part to see which steps it affects.</p>
+      </div>
+      <div class="chain" id="chain"></div>
+      <p class="equation" id="equation"></p>
+    </section>
+
+    <section class="wrap section" id="presets">
+      <div class="section-head">
+        <h2>Reference conversions</h2>
+        <p>Select an entry to load it into the converter. A check mark indicates that the computed factor agrees with the published SwissFluxNet factor within 0.005 %.</p>
+      </div>
+      <h3 class="sub">SwissFluxNet sequences</h3>
+      <div class="presets" id="presetsRef"></div>
+      <h3 class="sub">Additional conversions</h3>
+      <div class="presets" id="presetsExtra"></div>
+    </section>
+
+    <section class="wrap section" id="batch">
+      <div class="section-head">
+        <h2>Batch conversion</h2>
+        <p>Paste one value per line, or tab-separated columns copied from a spreadsheet. The current units and conversion factor apply to every numeric cell. Non-numeric cells, such as column headers, are copied unchanged.</p>
+      </div>
+      <div class="card batch">
+        <div class="batch-bar">
+          <span class="batch-units" id="batchUnits"></span>
+          <label class="check">
+            <input type="checkbox" id="keepMissing" checked>
+            <span class="check-box" aria-hidden="true"></span>
+            Treat −9999 as missing value
+          </label>
+        </div>
+        <div class="batch-cols">
+          <div class="batch-col">
+            <label for="batchIn" class="pane-label">Input</label>
+            <textarea id="batchIn" spellcheck="false">NEE
+-9999
+-12.84
+-8.31
+-2.07
+1.96
+3.42</textarea>
+          </div>
+          <div class="batch-col">
+            <label for="batchOut" class="pane-label">Output <span id="batchCount"></span></label>
+            <textarea id="batchOut" readonly spellcheck="false"></textarea>
+          </div>
+        </div>
+        <div class="batch-actions">
+          <button class="btn quiet" type="button" id="batchClear"><span class="btn-label">Clear</span></button>
+          <button class="btn" type="button" id="batchCopy">
+            <span class="ic"><svg class="base-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><svg class="ok-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+            <span class="btn-label">Copy output</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="constants">
+      <div class="section-head">
+        <h2>Constants</h2>
+        <p>Values used to compute the conversion factors.</p>
+      </div>
+      <div class="consts" id="consts"></div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="footer-brand">Flux unit <em>conversions</em></div>
+    <p>Reference sequences from the SwissFluxNet documentation, <a href="https://www.swissfluxnet.ethz.ch/index.php/documentation/conversion-sequences/" target="_blank" rel="noopener">Conversion sequences</a>. Verify results independently before using them in publications.</p>
+    <p class="copyright">© <span id="year">2026</span> Lukas Hörtnagl<span class="build" id="build"></span></p>
+  </footer>
+
+  <div class="pop-scrim" id="popScrim" hidden></div>
+  <div class="popover" id="popover" role="listbox" hidden></div>
+  <div class="toast" id="toast" aria-hidden="true"></div>
+
+  <script src="molecule.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
