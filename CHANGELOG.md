@@ -1,13 +1,13 @@
 # Changelog
 
-## [1.0.3] - 20 Oct 2026
+## 1.0.3 - 20 Oct 2026
 
 ### Added
 
 - Zenodo DOI and ORCID link in the footer.
 - Citation file (CITATION.cff) with DOI and ORCID, and a DOI badge and citation section in the README.
 
-## [1.0.2] - 20 Oct 2026
+## 1.0.2 - 20 Oct 2026
 
 ### Changed
 
@@ -40,6 +40,3 @@ First release.
 - 3D model of the selected gas.
 - Shareable links with the current units and value.
 - Light and dark theme.
-
-[1.0.3]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.3
-[1.0.2]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.2
