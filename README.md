@@ -1,8 +1,8 @@
-<h1><img src="logo.svg" alt="" width="40" height="40" align="absmiddle"> Flux unit conversions</h1>
+<h1><img src="logo.svg" alt="" width="40" height="40" align="absmiddle"> Flux unit converter</h1>
 
 Unit conversion for eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O.
 
-**Web page:** https://holukas.github.io/flux-unit-conversions/
+**Web page:** https://holukas.github.io/flux-unit-converter/
 
 ## What it converts
 

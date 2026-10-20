@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flux unit conversions</title>
+  <title>Flux unit converter</title>
   <meta name="description" content="Unit conversion for eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O, with the full sequence of conversion factors.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2337a07c'/%3E%3Cstop offset='1' stop-color='%23076b4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.5 24.5h17' stroke-opacity='.6'/%3E%3Cpath d='M12.5 20.5v-12m-3.6 3.6 3.6-3.6 3.6 3.6M19.5 8.5v12m-3.6-3.6 3.6 3.6 3.6-3.6'/%3E%3C/g%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script>try { const t = localStorage.getItem('flux-units-theme'); if (t) document.documentElement.dataset.theme = t; } catch { /* storage blocked */ }</script>
+  <script>try { const t = localStorage.getItem('flux-unit-converter-theme'); if (t) document.documentElement.dataset.theme = t; } catch { /* storage blocked */ }</script>
 </head>
 <body>
   <div class="bg" aria-hidden="true"><div class="blob"></div></div>
 
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Flux unit conversions, top of page">
+      <a class="brand" href="#top" aria-label="Flux unit converter, top of page">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <defs>
             <linearGradient id="markFill" x1="0" y1="0" x2="1" y2="1">
@@ -30,7 +30,7 @@
           <path class="mark-glyph mark-up" d="M12.5 20.5v-12m-3.6 3.6 3.6-3.6 3.6 3.6"/>
           <path class="mark-glyph mark-down" d="M19.5 8.5v12m-3.6-3.6 3.6 3.6 3.6-3.6"/>
         </svg>
-        <span class="brand-word">Flux unit <em>conversions</em></span>
+        <span class="brand-word">Flux unit <em>converter</em></span>
       </a>
       <nav class="nav-links" aria-label="Sections">
         <a href="#sequence">Sequence</a>
@@ -47,7 +47,7 @@
 
   <main id="top">
     <section class="wrap intro">
-      <h1 class="sr-only">Flux unit conversions</h1>
+      <h1 class="sr-only">Flux unit converter</h1>
       <p class="lede reveal" style="--d:0"><strong>Select the gas, enter a flux value, and click any part of a unit to change it.</strong> Molar or mass amounts; molecule or element basis (C, N); CO<sub>2</sub>-equivalents (GWP<sub>100</sub>) for CH<sub>4</sub> and N<sub>2</sub>O. Each conversion step is listed below.</p>
       <p class="legend reveal" style="--d:0"><span class="legend-title">Unit parts:</span><span class="lg u-amt">Amount</span><span class="lg u-cmp">Basis</span><span class="lg u-area">Area</span><span class="lg u-time">Time</span></p>
     </section>
@@ -194,9 +194,9 @@
   </main>
 
   <footer class="wrap footer">
-    <div class="footer-brand">Flux unit <em>conversions</em></div>
+    <div class="footer-brand">Flux unit <em>converter</em></div>
     <p>Reference sequences from the SwissFluxNet documentation, <a href="https://www.swissfluxnet.ethz.ch/index.php/documentation/conversion-sequences/" target="_blank" rel="noopener">Conversion sequences</a>. Verify results independently before using them in publications.</p>
-    <p class="meta"><span>Created by Lukas Hörtnagl</span><a href="https://github.com/holukas/flux-unit-conversions/blob/main/LICENSE" target="_blank" rel="noopener">GPL-3.0</a><a href="https://github.com/holukas/flux-unit-conversions/blob/main/CHANGELOG.md" target="_blank" rel="noopener" title="Changelog">v1.0.1</a><span id="build"></span></p>
+    <p class="meta"><span>Created by Lukas Hörtnagl</span><a href="https://github.com/holukas/flux-unit-converter/blob/main/LICENSE" target="_blank" rel="noopener">GPL-3.0</a><a href="https://github.com/holukas/flux-unit-converter/blob/main/CHANGELOG.md" target="_blank" rel="noopener" title="Changelog">v1.0.1</a><span id="build"></span></p>
   </footer>
 
   <div class="pop-scrim" id="popScrim" hidden></div>

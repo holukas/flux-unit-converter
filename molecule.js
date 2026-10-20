@@ -1,4 +1,4 @@
-/* Flux unit conversions · 3D ball-and-stick model of the selected gas, drawn on a 2D canvas */
+/* Flux unit converter · 3D ball-and-stick model of the selected gas, drawn on a 2D canvas */
 (() => {
   'use strict';
 

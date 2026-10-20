@@ -1,4 +1,4 @@
-/* Flux unit conversions */
+/* Flux unit converter */
 (() => {
   'use strict';
 
@@ -1085,7 +1085,7 @@
     const flip = () => {
       root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
       syncThemeBtn();
-      try { localStorage.setItem('flux-units-theme', root.dataset.theme); } catch { /* storage blocked */ }
+      try { localStorage.setItem('flux-unit-converter-theme', root.dataset.theme); } catch { /* storage blocked */ }
     };
     if (document.startViewTransition && !reduceMotion.matches) document.startViewTransition(flip);
     else flip();

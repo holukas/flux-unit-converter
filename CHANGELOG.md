@@ -28,5 +28,5 @@ First release.
 - Shareable links with the current units and value.
 - Light and dark theme.
 
-[1.0.1]: https://github.com/holukas/flux-unit-conversions/releases/tag/v1.0.1
-[1.0.0]: https://github.com/holukas/flux-unit-conversions/releases/tag/v1.0.0
+[1.0.1]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.1
+[1.0.0]: https://github.com/holukas/flux-unit-converter/releases/tag/v1.0.0
