@@ -7,6 +7,7 @@ authors:
   - family-names: "Hörtnagl"
     given-names: "Lukas"
     affiliation: "ETH Zurich"
+    orcid: "https://orcid.org/0000-0002-5569-0761"
 doi: 10.5281/zenodo.23509862
 url: "https://holukas.github.io/flux-unit-converter/"
 repository-code: "https://github.com/holukas/flux-unit-converter"
