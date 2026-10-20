@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.1] - 20 Oct 2026
+
+### Added
+
+- GPL-3.0 license.
+- Version number in the footer, linked to this changelog.
+
+### Changed
+
+- Footer: "Created by" replaces the copyright notice, the license is linked, and the update date uses the format "20 Oct 2026, 13:33 CEST".
+- Footer items share one font size and separator spacing.
+
 ## [1.0.0] - 20 Oct 2026
 
 First release.
@@ -16,4 +28,5 @@ First release.
 - Shareable links with the current units and value.
 - Light and dark theme.
 
+[1.0.1]: https://github.com/holukas/flux-unit-conversions/releases/tag/v1.0.1
 [1.0.0]: https://github.com/holukas/flux-unit-conversions/releases/tag/v1.0.0
