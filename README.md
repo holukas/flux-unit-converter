@@ -1,5 +1,7 @@
 <h1><img src="logo.svg" alt="" width="40" height="40" align="absmiddle"> Flux unit converter</h1>
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23509862.svg)](https://doi.org/10.5281/zenodo.23509862)
+
 Unit conversion for eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O.
 
 **Web page:** https://holukas.github.io/flux-unit-converter/
@@ -26,6 +28,12 @@ python -m http.server
 ```
 
 Verify results independently before using them in publications.
+
+## Citation
+
+Hörtnagl, L. Flux unit converter. Zenodo. https://doi.org/10.5281/zenodo.23509862
+
+This DOI always resolves to the latest version. To cite a specific version, use the version DOI listed on the Zenodo record.
 
 ## License
 

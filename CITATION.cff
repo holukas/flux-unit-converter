@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this tool, please cite it as below."
+title: "Flux unit converter"
+abstract: "Online tool for converting eddy-covariance fluxes of CO₂, CH₄, N₂O and H₂O (molar, mass, element basis, CO₂-eq), with each conversion factor listed."
+type: software
+authors:
+  - family-names: "Hörtnagl"
+    given-names: "Lukas"
+    affiliation: "ETH Zurich"
+doi: 10.5281/zenodo.23509862
+url: "https://holukas.github.io/flux-unit-converter/"
+repository-code: "https://github.com/holukas/flux-unit-converter"
+license: GPL-3.0
+keywords:
+  - eddy covariance
+  - flux
+  - unit conversion
+  - greenhouse gases
+  - micrometeorology
