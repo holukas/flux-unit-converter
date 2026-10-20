@@ -26,3 +26,7 @@ python -m http.server
 ```
 
 Verify results independently before using them in publications.
+
+## License
+
+GPL-3.0. See [LICENSE](LICENSE).
